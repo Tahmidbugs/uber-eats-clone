@@ -2,9 +2,7 @@ import { View } from "react-native";
 import React, { useState } from "react";
 import HeaderButton from "./HeaderButton";
 
-const HeaderTab = () => {
-  const [activeTab, setActiveTab] = useState("Delivery");
-
+const HeaderTab = ({ activeTab, setActiveTab }) => {
   return (
     <View style={{ flexDirection: "row", alignSelf: "center" }}>
       <HeaderButton

@@ -10,10 +10,11 @@ const YELP_API_KEY =
 
 const Home = () => {
   const [Restaurants, setRestaurants] = React.useState([]);
+  const [selectedcity, setSelectedCity] = React.useState("Tampa");
+  const [activeTab, setActiveTab] = React.useState("Delivery");
 
   const getRestaurantsFromYelp = () => {
-    const url =
-      "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Tampa";
+    const url = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${selectedcity}`;
 
     const apiOptions = {
       headers: {
@@ -23,18 +24,24 @@ const Home = () => {
 
     return fetch(url, apiOptions)
       .then((res) => res.json())
-      .then((json) => setRestaurants(json.businesses));
+      .then((json) =>
+        setRestaurants(
+          json.businesses.filter((business) =>
+            business.transactions.includes(activeTab.toLowerCase())
+          )
+        )
+      );
   };
 
   React.useEffect(() => {
     getRestaurantsFromYelp();
-  }, []);
+  }, [selectedcity, activeTab]);
 
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
       <View style={{ backgroundColor: "white", padding: 15, marginTop: 10 }}>
-        <HeaderTab />
-        <SearchBar />
+        <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+        <SearchBar searchedCity={setSelectedCity} />
       </View>
       <ScrollView>
         <Categories />
