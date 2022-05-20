@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import { Divider } from "react-native-elements";
+import BottomTab from "../components/BottomTab";
 import Categories from "../components/Categories";
 import HeaderTab from "../components/HeaderTab";
 import RestaurantItem from "../components/RestaurantItem";
@@ -47,6 +49,8 @@ const Home = () => {
         <Categories />
         <RestaurantItem Restaurants={Restaurants} />
       </ScrollView>
+      <Divider width={1} />
+      <BottomTab />
     </SafeAreaView>
   );
 };
