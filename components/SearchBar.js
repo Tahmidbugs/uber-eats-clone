@@ -3,10 +3,15 @@ import { View, Text, StyleSheet } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { FontAwesome5, AntDesign } from "@expo/vector-icons";
 
-const SearchBar = () => {
+const SearchBar = ({ searchedCity }) => {
   return (
     <View style={{ marginTop: 15, flexDirection: "row" }}>
       <GooglePlacesAutocomplete
+        query={{ key: "AIzaSyD6oBazNZMm21jltFWc4FvhxFCVC13oNJk" }}
+        onPress={(data, details = null) => {
+          const city = data.description.split(",")[0];
+          searchedCity(city);
+        }}
         placeholder="Search"
         styles={{
           textInput: {
