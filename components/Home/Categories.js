@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 
-import MenuItems from "../data/MenuItems";
+import MenuItems from "../../data/MenuItems";
 
 const Categories = () => {
   return (

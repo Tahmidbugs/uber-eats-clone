@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import { Divider } from "react-native-elements";
-import BottomTab from "../components/BottomTab";
-import Categories from "../components/Categories";
-import HeaderTab from "../components/HeaderTab";
-import RestaurantItem from "../components/RestaurantItem";
-import SearchBar from "../components/SearchBar";
+import BottomTab from "../components/Home/BottomTab";
+import Categories from "../components/Home/Categories";
+import HeaderTab from "../components/Home/HeaderTab";
+import RestaurantItem from "../components/Home/RestaurantItem";
+import SearchBar from "../components/Home/SearchBar";
 
 const YELP_API_KEY =
   "FW1Qr6-dp0OSUJQA6IBo4ud_TFfnYQTkn7MmseFYKEIXqINca1qU_GWtpMBF1WdY6p8He6uxQUvmmscHHKUkl1kTZOIf9TU_76A_S2hWlybdP-hqZN6DsT_IltCGYnYx";
