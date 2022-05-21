@@ -20,6 +20,7 @@ const RestaurantItem = ({ Restaurants }) => {
       {Restaurants.map((restaurant, index) => (
         <TouchableOpacity
           activeOpacity={1}
+          key={index}
           style={{ marginBottom: 30 }}
           onPress={() => {
             navigation.navigate("Menu", {
@@ -33,7 +34,6 @@ const RestaurantItem = ({ Restaurants }) => {
           }}
         >
           <View
-            key={index}
             style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
           >
             <RestaurantImage image={restaurant.image_url} />

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Divider } from "react-native-elements";
 import Fakefood from "../../data/Fakefood";
-
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 const FoodItem = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -15,6 +15,13 @@ const FoodItem = () => {
               margin: 20,
             }}
           >
+            <BouncyCheckbox
+              iconStyle={{
+                borderColor: "lightgray",
+                borderRadius: 0,
+              }}
+              fillColor="green"
+            />
             <FoodInfo
               foodName={item.title}
               foodDesc={item.description}
@@ -36,7 +43,7 @@ const FoodItem = () => {
 export default FoodItem;
 
 const FoodInfo = (props) => (
-  <View style={{ width: 240, justifyContent: "space-evenly" }}>
+  <View style={{ width: 220, justifyContent: "space-evenly" }}>
     <Text style={{ fontSize: 19, fontWeight: "600" }}>{props.foodName}</Text>
     <Text>{props.foodDesc}</Text>
     <Text>{props.foodPrice}</Text>

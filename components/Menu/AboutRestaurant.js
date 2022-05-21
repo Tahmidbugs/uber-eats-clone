@@ -9,7 +9,7 @@ const AboutRestaurant = ({ route }) => {
     .map((categories) => categories.title)
     .join(" • ");
   const description = `${Categories} 
-${price ? " • " + price : ""} • 🎟️ • ${rating} ⭐ ${reviews}+`;
+${price ? " • " + price : ""} • 🎟️ • ${rating} ⭐ (${reviews})+`;
 
   return (
     <View>

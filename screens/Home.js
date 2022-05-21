@@ -6,6 +6,7 @@ import Categories from "../components/Home/Categories";
 import HeaderTab from "../components/Home/HeaderTab";
 import RestaurantItem from "../components/Home/RestaurantItem";
 import SearchBar from "../components/Home/SearchBar";
+import Cart from "../components/Menu/Cart";
 
 const YELP_API_KEY =
   "FW1Qr6-dp0OSUJQA6IBo4ud_TFfnYQTkn7MmseFYKEIXqINca1qU_GWtpMBF1WdY6p8He6uxQUvmmscHHKUkl1kTZOIf9TU_76A_S2hWlybdP-hqZN6DsT_IltCGYnYx";
