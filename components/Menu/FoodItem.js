@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Divider } from "react-native-elements";
 import Fakefood from "../../data/Fakefood";
-import MenuItems from "../../data/MenuItems";
+
 const FoodItem = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -22,7 +22,11 @@ const FoodItem = () => {
             />
             <FoodImage imageurl={item.image} />
           </View>
-          <Divider width={0.5} orientation={"vertical"} />
+          <Divider
+            width={0.5}
+            orientation="vertical"
+            style={{ marginHorizontal: 15 }}
+          />
         </View>
       ))}
     </ScrollView>

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -13,18 +14,27 @@ import RestaurantImage from "./RestaurantImage";
 import RestaurantInfo from "./RestaurantInfo";
 
 const RestaurantItem = ({ Restaurants }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity activeOpacity={1} style={{ marginBottom: 30 }}>
+    <>
       {Restaurants.map((restaurant, index) => (
-        <View
-          key={index}
-          style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
+        <TouchableOpacity
+          activeOpacity={1}
+          style={{ marginBottom: 30 }}
+          onPress={() => {
+            navigation.navigate("Menu");
+          }}
         >
-          <RestaurantImage image={restaurant.image_url} />
-          <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
-        </View>
+          <View
+            key={index}
+            style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
+          >
+            <RestaurantImage image={restaurant.image_url} />
+            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+          </View>
+        </TouchableOpacity>
       ))}
-    </TouchableOpacity>
+    </>
   );
 };
 
