@@ -2,27 +2,15 @@ import React from "react";
 
 import { View, Text, StyleSheet, Image } from "react-native";
 
-const hardcodeddata = {
-  name: "Farmhouse Kitchen Thai Cuisine",
-  image:
-    "https://cdn.vox-cdn.com/thumbor/gxotNUF9YxGbMSajO8-I3eN6ZFI=/0x0:2000x1335/1200x675/filters:focal(840x508:1160x828)/cdn.vox-cdn.com/uploads/chorus_image/image/58999873/2018_03_08_FarmHouse_beverlyHills_013.0.jpg",
-  price: "$$",
-  reviews: "1231",
-  rating: "5",
-  categories: [
-    { title: "Indian" },
-    { title: "Comfort Food" },
-    { title: "Ice cream" },
-  ],
-};
+const AboutRestaurant = ({ route }) => {
+  const { name, image, price, reviews, rating, categories } = route.params;
 
-const { name, image, price, reviews, rating, categories } = hardcodeddata;
-
-const Categories = categories.map((categories) => categories.title).join(" • ");
-const description = `${Categories} 
+  const Categories = categories
+    .map((categories) => categories.title)
+    .join(" • ");
+  const description = `${Categories} 
 ${price ? " • " + price : ""} • 🎟️ • ${rating} ⭐ ${reviews}+`;
 
-const AboutRestaurant = () => {
   return (
     <View>
       <Image

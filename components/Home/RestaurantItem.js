@@ -22,7 +22,14 @@ const RestaurantItem = ({ Restaurants }) => {
           activeOpacity={1}
           style={{ marginBottom: 30 }}
           onPress={() => {
-            navigation.navigate("Menu");
+            navigation.navigate("Menu", {
+              name: restaurant.name,
+              image: restaurant.image_url,
+              price: restaurant.price,
+              reviews: restaurant.review_count,
+              rating: restaurant.rating,
+              categories: restaurant.categories,
+            });
           }}
         >
           <View
