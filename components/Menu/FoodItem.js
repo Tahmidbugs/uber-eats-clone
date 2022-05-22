@@ -3,8 +3,31 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Divider } from "react-native-elements";
 import Fakefood from "../../data/Fakefood";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch, useSelector } from "react-redux";
 
 const FoodItem = ({ restaurantName }) => {
+  const dispatch = useDispatch();
+
+  const selectItem = (item, selected) => {
+    dispatch({
+      type: selected ? "ADD_TO_CART" : "REMOVE_FROM_CART",
+      payload: {
+        ...item,
+        restaurantName: restaurantName,
+      },
+    });
+  };
+
+  const cartItems = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  );
+  const isSelected = (food, cartItems) => {
+    const same = Boolean(
+      cartItems.find((item) => item.restaurantName == restaurantName)
+    );
+
+    return Boolean(cartItems.find((item) => item.title == food.title) && same);
+  };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {Fakefood.map((food, index) => (
@@ -22,6 +45,8 @@ const FoodItem = ({ restaurantName }) => {
                 borderRadius: 0,
               }}
               fillColor="green"
+              onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+              isChecked={isSelected(food, cartItems)}
             />
             <FoodInfo
               foodName={food.title}
