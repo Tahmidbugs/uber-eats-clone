@@ -1,9 +1,11 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from "react-native";
 import { useSelector } from "react-redux";
-
+import ModalContent from "./ModalContent";
 const Cart = (props) => {
-  const items = useSelector((state) => state.cartReducer.selectedItems.items);
+  const { items, restaurantName } = useSelector(
+    (state) => state.cartReducer.selectedItems
+  );
 
   const price_list = items.map((item) => Number(item.price.replace("$", "")));
   //   console.log(price_list);
@@ -11,13 +13,25 @@ const Cart = (props) => {
     (previous, current) => previous + current,
     0
   );
-  const total = total_amount.toLocaleString("en", {
-    style: "currency",
-    currency: "USD",
-  });
-  console.log(total_amount);
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  //   console.log(total_amount);
   return (
     <>
+      <Modal
+        animationType="slide"
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <ModalContent
+          setModalVisible={setModalVisible}
+          restaurantName={restaurantName}
+          items={items}
+          total_amount={total_amount}
+        />
+      </Modal>
       {total_amount ? (
         <View
           style={{
@@ -49,6 +63,7 @@ const Cart = (props) => {
                 width: 300,
                 position: "relative",
               }}
+              onPress={() => setModalVisible(true)}
             >
               <Text style={{ color: "white", fontSize: 20, marginRight: 50 }}>
                 View Cart
