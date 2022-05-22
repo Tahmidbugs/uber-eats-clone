@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import OrderedItem from "./OrderedItem";
+import { firestore } from "../../firebase";
 
 const ModalContent = ({
   setModalVisible,
@@ -22,7 +23,11 @@ const ModalContent = ({
           <OrderedItem key={index} item={item} />
         ))}
         <DisplayTotal total_amount={total_amount} />
-        <CheckOutBox setModalVisible={setModalVisible} />
+        <CheckOutBox
+          setModalVisible={setModalVisible}
+          items={items}
+          restaurantName={restaurantName}
+        />
       </View>
     </View>
   );
@@ -93,10 +98,20 @@ const DisplayTotal = ({ total_amount }) => {
   );
 };
 
-const CheckOutBox = ({ setModalVisible }) => {
+const CheckOutBox = ({ setModalVisible, items, restaurantName }) => {
+  const AddOrdertoFirebase = () => {
+    const db = firestore();
+    db.collection("orders").add({
+      items: items,
+      restaurantName: restaurantName,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setModalVisible(false);
+    console.log("order added successfully");
+  };
   return (
     <TouchableOpacity
-      onPress={() => setModalVisible(false)}
+      onPress={() => AddOrdertoFirebase()}
       style={{ alignItems: "center", marginTop: 25, marginBottom: 40 }}
     >
       <View>
