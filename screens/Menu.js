@@ -11,7 +11,7 @@ const Menu = ({ route, navigation }) => {
       <View>
         <AboutRestaurant route={route} />
         <Divider width={1.8} style={{ marginVertical: 20 }} />
-        <FoodItem />
+        <FoodItem restaurantName={route.params.name} />
       </View>
       <Cart navigation={navigation} restaurantName={route.params.name} />
     </>

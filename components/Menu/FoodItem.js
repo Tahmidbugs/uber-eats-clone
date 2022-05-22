@@ -3,10 +3,11 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Divider } from "react-native-elements";
 import Fakefood from "../../data/Fakefood";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-const FoodItem = () => {
+
+const FoodItem = ({ restaurantName }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      {Fakefood.map((item, index) => (
+      {Fakefood.map((food, index) => (
         <View key={index}>
           <View
             style={{
@@ -23,11 +24,11 @@ const FoodItem = () => {
               fillColor="green"
             />
             <FoodInfo
-              foodName={item.title}
-              foodDesc={item.description}
-              foodPrice={item.price}
+              foodName={food.title}
+              foodDesc={food.description}
+              foodPrice={food.price}
             />
-            <FoodImage imageurl={item.image} />
+            <FoodImage imageurl={food.image} />
           </View>
           <Divider
             width={0.5}
