@@ -15,7 +15,7 @@ let cartReducer = (state = defaultState, action) => {
       return newState;
     }
     case "REMOVE_FROM_CART": {
-      console.log("REMOVED");
+      //   console.log("REMOVED");
       let newState = { ...state };
       newState.selectedItems = {
         items: [
@@ -25,7 +25,7 @@ let cartReducer = (state = defaultState, action) => {
         ],
         restaurantName: action.payload.restaurantName,
       };
-      console.log(newState);
+      //   console.log(newState);
       return newState;
     }
     default: {

@@ -19,12 +19,12 @@ const RestaurantInfo = ({ name, rating }) => (
         height: 30,
         width: 30,
         borderRadius: 15,
-        backgroundColor: "grey",
+        backgroundColor: "black",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Text>{rating}</Text>
+      <Text style={{ color: "white", fontWeight: "500" }}>{rating}</Text>
     </View>
   </View>
 );

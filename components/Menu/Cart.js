@@ -33,17 +33,7 @@ const Cart = (props) => {
         />
       </Modal>
       {total_amount ? (
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            position: "absolute",
-            alignItems: "center",
-            justifyContent: "center",
-            bottom: 30,
-            zIndex: 999,
-          }}
-        >
+        <View style={styles.ViewCart}>
           <View
             style={{
               flexDirection: "row",
@@ -52,17 +42,7 @@ const Cart = (props) => {
             }}
           >
             <TouchableOpacity
-              style={{
-                marginTop: 20,
-                backgroundColor: "black",
-                alignItems: "center",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                padding: 15,
-                borderRadius: 30,
-                width: 300,
-                position: "relative",
-              }}
+              style={styles.ViewCartContainer}
               onPress={() => setModalVisible(true)}
             >
               <Text style={{ color: "white", fontSize: 20, marginRight: 50 }}>
@@ -82,3 +62,26 @@ const Cart = (props) => {
 };
 
 export default Cart;
+
+const styles = StyleSheet.create({
+  ViewCartContainer: {
+    marginTop: 20,
+    backgroundColor: "black",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    padding: 15,
+    borderRadius: 30,
+    width: 300,
+    position: "relative",
+  },
+  ViewCart: {
+    flex: 1,
+    flexDirection: "row",
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    bottom: 30,
+    zIndex: 999,
+  },
+});
