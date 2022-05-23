@@ -31,7 +31,14 @@ const OrderCompleted = ({ route }) => {
   //   return () => unsubscribe();
   // }, [lastorder]);
   return (
-    <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
+    <SafeAreaView
+      style={{
+        backgroundColor: "white",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <View
         style={{
           margin: 15,
